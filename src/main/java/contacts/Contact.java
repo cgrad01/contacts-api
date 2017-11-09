@@ -1,3 +1,5 @@
+package main.java.contacts;
+
 public class Contact {
     private String name;
     private String number;
