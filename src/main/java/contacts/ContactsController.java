@@ -3,11 +3,13 @@ package main.java.contacts;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+
 @RestController
 public class ContactsController {
     @RequestMapping("/contacts")
-    public Contact contact() {
-        return new Contact("Corey Grad", "914-263-8399", "104 Suffolk");
+    public ArrayList<Contact> contacts() {
+        return ContactFactory.makeContacts();
     }
 
 }
