@@ -1,5 +1,7 @@
 package main.java.contacts;
 
+import org.springframework.web.bind.annotation.RequestBody;
+
 public class Contact {
     private String name;
     private String number;
@@ -10,6 +12,8 @@ public class Contact {
         this.number = number;
         this.address = address;
     }
+
+    public Contact() {}
 
     public String getName() {
         return name;
