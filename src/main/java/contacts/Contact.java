@@ -1,8 +1,15 @@
 package main.java.contacts;
 
-import org.springframework.web.bind.annotation.RequestBody;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Contact {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     private String name;
     private String number;
     private String address;
@@ -14,6 +21,10 @@ public class Contact {
     }
 
     public Contact() {}
+
+    public Integer getId() {
+        return id;
+    }
 
     public String getName() {
         return name;

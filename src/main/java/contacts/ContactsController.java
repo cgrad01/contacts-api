@@ -1,26 +1,23 @@
 package main.java.contacts;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import java.util.ArrayList;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ContactsController {
 
     @Autowired
-    ContactStorageService contactStorageService;
+    private ContactRepository contactRepository;
 
     @RequestMapping("/contacts")
-    public ArrayList<Contact> index() {
-        return contactStorageService.getContactsList();
+    public Iterable<Contact> index() {
+        return contactRepository.findAll();
     }
 
     @RequestMapping(value = "/contact", method = RequestMethod.POST)
-    public void create(@RequestBody Contact contact){
-        contactStorageService.add(contact);
+    public @ResponseBody String create(@RequestBody Contact contact){
+        contactRepository.save(contact);
+        return "Saved";
     }
 
 }
